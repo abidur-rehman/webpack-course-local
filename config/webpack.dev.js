@@ -1,4 +1,5 @@
 const path = require("path")
+const webpack = require("webpack")
 
 module.exports = {
     entry: {
@@ -12,7 +13,11 @@ module.exports = {
     },
     devServer : {
       contentBase: "dist",
-      overlay: true
+      overlay: true,
+      hot: true,
+      stats: {
+          colors: true
+      }
     },
     module: {
         rules: [
@@ -70,5 +75,8 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 }
