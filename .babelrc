@@ -10,5 +10,9 @@
     ],
     "@babel/preset-react"
   ],
-  "plugins": ["@babel/transform-runtime", "react-hot-loader/babel"]
+  "plugins": [
+    "@babel/transform-runtime",
+    "react-hot-loader/babel",
+    ["emotion", { "sourceMap": true, "autoLabel": true }]
+  ]
 }
