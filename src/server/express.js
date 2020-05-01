@@ -23,9 +23,10 @@ if (!isProd) {
 }
 
 // 3. To use static middleware
-const staticMiddleware = express.static("dist");
-
-server.use(staticMiddleware);
+const expressStaticGzip = require('express-static-gzip')
+server.use(expressStaticGzip("dist", {
+    enableBrotli: true
+}));
 
 const PORT = process.env.PORT || 8080
 
