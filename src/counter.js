@@ -26,7 +26,7 @@ class Counter extends Component {
         return (
             <div className="App">
                 <div className={styles.counter} onClick={()=>this.setState({number : this.state.number + 1})}>
-                    <Fancy wild={isWild}>{this.state.number}</Fancy>
+                    <Fancy wild={isWild}>Couter: {this.state.number}</Fancy>
                 </div>
             </div>
         );
