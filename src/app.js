@@ -1,22 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from "react-hot-loader";
-import Counter from "./counter";
+import AppRoot from "./components/AppRoot";
+import Data from '../data/bio'
 
 function render(Component) {
     ReactDOM.render(
         <AppContainer>
-            <Component />
+            <Component heading={Data.heading} content={Data.bioText}/>
         </AppContainer>,
         document.getElementById("react-root")
     )
 }
 
-render(Counter);
+render(AppRoot);
 
 if(module.hot) {
-    module.hot.accept("./counter.js", () => {
-        const NextApp = require('./counter').default;
+    module.hot.accept("./components/AppRoot.js", () => {
+        const NextApp = require('./components/AppRoot').default;
         render(NextApp);
     })
 }

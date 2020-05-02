@@ -59,7 +59,7 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                localIdentName: "[name]--[local]",
+                                localIdentName: "[local]",
                             }
                         }
                     },
@@ -93,6 +93,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("development"),
+                WEBPACK: true
+            }
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new HTMLWebpackPlugin({
             template: './src/index.html'
