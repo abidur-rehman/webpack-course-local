@@ -55,7 +55,7 @@ module.exports = env => {
                             loader: 'css-loader',
                             options: {
                                 modules: {
-                                    localIdentName: "[name]--[local]",
+                                    localIdentName: "[local]",
                                 }
                             }
                         },
@@ -91,7 +91,7 @@ module.exports = env => {
         plugins: [
             new OptimizeCSSAssetsPlugin(),
             new MiniCSSExtractPlugin({
-                filename: "[name]-[contenthash].css"
+                filename: "[name].css"
             }),
             new HTMLWebpackPlugin({
                 template: './src/index.html'

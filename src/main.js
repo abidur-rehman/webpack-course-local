@@ -1,3 +1,3 @@
-require("./index.html")
-require("./nav.sass")
+require("./main.sass")
+require("./images/link.jpg")
 require('./app')
