@@ -1,7 +1,6 @@
 const path = require("path")
 const webpack = require("webpack")
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-// const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     name: 'client',
@@ -99,9 +98,6 @@ module.exports = {
                 WEBPACK: true
             }
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        // new HTMLWebpackPlugin({
-        //     template: './src/index.html'
-        // })
+        new webpack.HotModuleReplacementPlugin()
     ]
 }
