@@ -1,8 +1,9 @@
 import React from 'react';
+import '../sass/Gallery.sass';
 
 const getBundle = () => {
-    import("lodash").then(_ => {
-        console.log("imported", _)
+    import('lodash').then(_ => {
+        console.log('imported', _)
     })
 }
 
