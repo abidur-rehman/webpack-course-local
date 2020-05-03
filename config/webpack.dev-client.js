@@ -49,14 +49,26 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: ExtractCssChunks.loader },
+                    {
+                        loader: ExtractCssChunks.loader,
+                        options: {
+                            hot: true,
+                            reloadAll: true
+                        }
+                    },
                     { loader: 'css-loader' }
                 ]
             },
             {
                 test: /\.sass$/,
                 use: [
-                    { loader: ExtractCssChunks.loader },
+                    {
+                        loader: ExtractCssChunks.loader,
+                        options: {
+                            hot: true,
+                            reloadAll: true
+                        }
+                    },
                     { loader: 'css-loader' },
                     { loader: 'sass-loader' }
                 ]
