@@ -1,6 +1,6 @@
-const path = require("path")
-const webpack = require("webpack")
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 
 module.exports = {
     name: 'client',
@@ -13,19 +13,19 @@ module.exports = {
             './src/main.js'
         ]
     },
-    mode: "development",
+    mode: 'development',
     output: {
-        filename: "[name]-bundle.js",
-        chunkFilename: "[name].js",
-        path: path.resolve(__dirname, "../dist"),
-        publicPath: "/"
+        filename: '[name]-bundle.js',
+        chunkFilename: '[name].js',
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: '/'
     },
     devServer : {
-      contentBase: "dist",
+      contentBase: 'dist',
       overlay: true,
       hot: true
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -48,22 +48,18 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: {
-                        loader: "css-loader",
-                        options: {
-                            minimize: true
-                        }
-                    }
-                })
+                use: [
+                    { loader: ExtractCssChunks.loader },
+                    { loader: 'css-loader' }
+                ]
             },
             {
                 test: /\.sass$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: ['css-loader', 'sass-loader']
-                })
+                use: [
+                    { loader: ExtractCssChunks.loader },
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader' }
+                ]
             },
             {
                 test: /\.html$/,
@@ -71,7 +67,7 @@ module.exports = {
                     {
                         loader: 'html-loader',
                         options: {
-                            attrs: ["img:src"]
+                            attrs: ['img:src']
                         }
                     }
                 ]
@@ -82,7 +78,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: "[name].[ext]",
+                            name: '[name].[ext]',
                             outputPath: 'images/',
                             esModule: false
                         }
@@ -92,10 +88,10 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("[name].css"),
+        new ExtractCssChunks({ hot: true }),
         new webpack.DefinePlugin({
-            "process.env": {
-                NODE_ENV: JSON.stringify("development"),
+            'process.env': {
+                NODE_ENV: JSON.stringify('development'),
                 WEBPACK: true
             }
         }),
