@@ -1,15 +1,16 @@
 const path = require("path")
 const webpack = require("webpack")
-var nodeExternals = require("webpack-node-externals")
+const externals = require("./node-externals")
 
 module.exports = {
     name: 'server',
     target: "node",
-    externals: nodeExternals(),
+    externals,
     entry: './src/server/render.js',
-    mode: "development",
+    mode: "production",
     output: {
         filename: "prod-server-bundle.js",
+        chunkFilename: "[name].js",
         path: path.resolve(__dirname, "../build"),
         libraryTarget: "commonjs2"
     },
