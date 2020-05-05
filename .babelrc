@@ -11,10 +11,10 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    "@babel/transform-runtime",
-    "react-hot-loader/babel",
     "@babel/plugin-syntax-dynamic-import",
     "universal-import",
+    "react-hot-loader/babel",
+    "@babel/transform-runtime",
     ["emotion", { "sourceMap": true, "autoLabel": true }]
   ]
 }
